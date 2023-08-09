@@ -3,9 +3,15 @@ Console.WriteLine("Введите число :");
 int number = int.Parse (Console.ReadLine());
 System.Console.WriteLine("Введите порядковый номер цифры, которую необходимо найти , в числе ");
 int digit_position = int.Parse (Console.ReadLine());
-int digit = 0;
+int digit = number%10;
 
-if (number >= Math.Pow (10, (digit_position-1)))
+if (number < Math.Pow (10, (digit_position-1)))
+{
+     System.Console.WriteLine($"У введенного числа нет {digit_position} цифры");
+     
+      
+}
+else
 {
     while (number > Math.Pow (10, digit_position))
     {
@@ -13,14 +19,8 @@ if (number >= Math.Pow (10, (digit_position-1)))
     digit = (number%10);
     
     }
-    
-    
-}
-else
-{
-        System.Console.WriteLine($"У введенного числа нет {digit_position} цифры");
+    System.Console.WriteLine($" {digit_position} цифра введенного числа = {digit}");
         
 }
 
 
-System.Console.WriteLine($" {digit_position} цифра введенного числа = {digit}");
