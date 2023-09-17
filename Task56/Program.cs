@@ -37,16 +37,16 @@ int GetNumberOfRowWithMinSumm (int [,] arr)
     int sumlastrow = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        int sum = 0;
-        for (int j = 0; j < arr.GetLength(1); j++)
+        int sum = 0;                             //обнуление суммы текущей строки
+        for (int j = 0; j < arr.GetLength(1); j++) //переход на следующую строку
         {
-            sum = sum + arr [i,j];
+            sum += arr [i,j];               //получение суммы текущей строки строки
         }
-        if (sum<sumlastrow ) 
+        if (sum<sumlastrow )                     //сравнение с суммой предыдущей строки
         {
-        indexminsum = i;
+        indexminsum = i;                         //если сумма меньше суммы предыдущей строки запоминаем ее индекс
         }
-        sumlastrow = sum;
+        sumlastrow = sum;                        //перезаписываем сумму текущей строки в сумму предыдущей
     }
     return indexminsum;
 }
