@@ -1,5 +1,6 @@
 ﻿//Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку 
 //с наименьшей суммой элементов
+
 int [,] array = GenerateRandomArray (5,5);
 PrintArray ( array);
 System.Console.WriteLine("");
