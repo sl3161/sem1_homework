@@ -1,13 +1,9 @@
-﻿/*Задайте одномерный массив, заполненный
-случайными числами. Найдите сумму элементов, стоящих
-на нечётных позициях.*/
-int min = Promt ( "Введите начальное значение массива");
-int len = Promt ( "Введите длину массива");
-int max = Promt ("Введите конечный элемент массива");
-int [] Array = GetRandomArray (len, min, max);
+﻿/*Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.*/
+int len = Promt ( "Cколько чисел нужно ввести ?");
+int [] Array = InputArray (len);
 PrintArray (Array);
-int sum = SumOfNumbersOnOddPosition ( Array);
-System.Console.WriteLine( $"Cумма элементов, стоящих на нечётных позициях = { sum }");
+int sum = SumOfNumberBiggerZero ( Array);
+System.Console.WriteLine( $"Cумма элементов больше 0  = { sum }");
 
 int Promt ( string massage)
 {
@@ -16,23 +12,23 @@ int Promt ( string massage)
     return result;
 }
 
-int SumOfNumbersOnOddPosition (int[] arr)
+int SumOfNumberBiggerZero (int[] arr)
 {
     int sum = 0;
-    for (int i = 0; i < arr.Length; i=i+2)
+    for (int i = 0; i < arr.Length; i++)
     {
-        sum += arr [i];
+        if arr[i] >0 sum += arr [i];
     }
     return sum;
 }
 
-int [] GetRandomArray (int len, int min, int max)
+int [] InputArray (int len)
 {
     
     int [] res = new int [len];
     for (int i = 0; i < len; i++)
     {
-        res[i] = new Random().Next (min, max);
+        res[i] = Promt ("Введите значение :");
     }
     return res;
 
