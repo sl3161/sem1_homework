@@ -2,7 +2,7 @@
 // строки двумерного массива
 
 
-int [,] array = GenerateRandomArray (4,7);
+int [,] array = GenerateRandomArray (6,8);
 PrintArray (array);
 System.Console.WriteLine("");
 ArrangeRows (array);
@@ -36,27 +36,30 @@ void PrintArray (int [,] array)
 }
 
 void ArrangeRows ( int [,] array)
-{
+{        
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        int finisharrange = array.GetLength(1);
-        for (int j = 0; j < finisharrange; j++)
+    int finisharrange = array.GetLength(1)-1;    //начальное значение индекса последнего элемента неупорядоченной части массива
+        for (int j = 0; j < array.GetLength(1)-1; j++)
+
         {
-            int min = array [i, 0];
+            int temp = 0;               
             int k=0;
-            while (k<finisharrange-1)
-            
+            int min = array[i,0];      //записываем в мин 0 элемент строки
+            int indexmin = 0;              //обнуляем значение индека мин элемента
+            while (k< finisharrange)   //цикл поиска мин значения от 0 элемента до конца неупорядоченной части массива
             {
-                if (array [i, k+1] > array [i,k] )
-                {
-                    min = array [i,k+1];
-                    array [i, k+1]= array [i,k];
-                    array [i,k] = min;   
+                if (array [i, k+1] < min )  //сравнение следующего элемента массива с текущим
+                {   
+                    indexmin = k+1;         //запись значения меньшего их сравниваемых элементов и его индекса
+                    min = array[i,k+1];
                 }
-                k++;
-                
+                 k++;   
             }
-            finisharrange--;
+            temp = array [i, finisharrange];
+            array[i, finisharrange ] = array [i, indexmin];  //ставим мин элемент на последнее место в неупорядоченной части массива
+            array [i, indexmin] = temp;                      //меняем местами элементы
+            finisharrange--;                                 //меняем индекс конца неупорядоченной части массива
         }
     }
 }
